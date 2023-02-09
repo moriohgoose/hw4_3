@@ -98,7 +98,7 @@ class MoviesView(Resource):
         with db.session.begin():
             db.session.add(new_movie)
 
-        return "User created", 201
+        return "Movie created", 201
 
 
 @movie_ns.route('/<int:uid>')
@@ -122,7 +122,7 @@ class MovieView(Resource):
     def delete(self, uid: int):
         movie = db.session.query(Movie).get(uid)
         if not movie:
-            return "User not found", 404
+            return "Movie not found", 404
 
         db.session.delete(movie)
         db.session.commit()
